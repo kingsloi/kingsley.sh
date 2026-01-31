@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       crawlLinks: true,
-      routes: ['/']
+      routes: ['/', '/about', '/projects']
     }
   },
 
@@ -50,7 +50,21 @@ export default defineNuxtConfig({
     highlight: {
       theme: 'github-dark',
       langs: ['js', 'ts', 'vue', 'css', 'html', 'bash', 'json', 'php']
+    },
+    build: {
+      markdown: {
+        remarkPlugins: {},
+        rehypePlugins: {},
+        toc: {
+          depth: 3,
+          searchDepth: 3
+        }
+      }
     }
+  },
+
+  routeRules: {
+    '/posts/**': { prerender: true }
   },
 
   css: ['~/assets/css/main.css']
