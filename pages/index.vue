@@ -65,13 +65,13 @@ useHead({
             {{ section.year }}
           </h3>
           <ul class="list-none pl-0">
-            <li v-for="post in section.posts" :key="post._path">
+            <li v-for="post in section.posts" :key="post.path">
               <article class="blogroll__post">
                 <header
                   class="blogroll__post__heading"
                   :class="{ 'starred': post.starred }"
                 >
-                  <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
+                  <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
                   <time class="text-sm" :datetime="post.createdAt">{{ formatToHumanDate(post.createdAt) }}</time>
                 </header>
                 <p v-html="post.description" />
