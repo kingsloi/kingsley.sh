@@ -2,6 +2,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
 
+  // Static site generation
+  ssr: true,
+  nitro: {
+    preset: 'static',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss'
