@@ -1,33 +1,41 @@
+<script setup>
+const route = useRoute()
+
+const isBlogRouteActive = () => {
+  return route.path.includes('posts')
+}
+</script>
+
 <template>
   <div class="site">
     <header class="site-header">
       <div class="container">
         <nav>
-          <ul class="list-unstyled list-inline">
-            <li v-if="$nuxt.$route.path === '/'">
-              <h1 class="site-heading"><span>kingsley.sh</span></h1>
+          <ul>
+            <li v-if="route.path === '/'">
+              <h1 class="site-heading mt-0"><span>kingsley.sh</span></h1>
             </li>
             <li v-else>
-              <nuxt-link :class="{'nuxt-link-exact-active': isBlogRouteActive() }" to="/">
-                {{ isBlogRouteActive() ? '☚' : '' }} kingsley.sh
-              </nuxt-link>
+              <NuxtLink :class="{ 'router-link-exact-active': isBlogRouteActive() }" to="/">
+                {{ isBlogRouteActive() ? '\u261a' : '' }} kingsley.sh
+              </NuxtLink>
             </li>
             <li>
-              <nuxt-link to="/about">
+              <NuxtLink to="/about">
                 About
-              </nuxt-link>
+              </NuxtLink>
             </li>
             <li>
-              <nuxt-link to="/projects">
+              <NuxtLink to="/projects">
                 Projects
-              </nuxt-link>
+              </NuxtLink>
             </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <Nuxt />
+    <slot />
 
     <footer class="site-footer">
       <div class="container">
@@ -42,7 +50,6 @@
 
           <a class="site-footer__link" href="https://stackoverflow.com/users/1132557/kingsley" rel="noopener" target="_blank">
             <svg
-              id="Layer_1"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -64,7 +71,7 @@
           </a>
 
           <a class="site-footer__link" href="https://www.linkedin.com/in/kingsleyraspe/" rel="noopener" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="icon">
               <title>The LinkedIn icon, linking to Kingsley's profile.</title>
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
@@ -78,13 +85,3 @@
     </footer>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    isBlogRouteActive () {
-      return this.$route.path.includes('posts')
-    }
-  }
-}
-</script>
