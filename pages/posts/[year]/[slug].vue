@@ -6,6 +6,13 @@ import getSiteMeta from '~/utilities/getSiteMeta'
 const route = useRoute()
 const config = useRuntimeConfig()
 
+// Safari/iOS requires ISO 8601 format with 'T' separator
+const parseDate = (datetime) => {
+  if (!datetime) return new Date()
+  const isoString = String(datetime).replace(' ', 'T')
+  return new Date(isoString)
+}
+
 const { data: page } = await useAsyncData(`post-${route.params.year}-${route.params.slug}`, () => {
   return queryCollection('posts')
     .path(`/posts/${route.params.year}/${route.params.slug}`)
@@ -13,7 +20,7 @@ const { data: page } = await useAsyncData(`post-${route.params.year}-${route.par
 })
 
 const formatToHumanDate = (datetime) => {
-  return format(new Date(datetime), 'dd MMMM, yyyy')
+  return format(parseDate(datetime), 'dd MMMM, yyyy')
 }
 
 const meta = computed(() => {

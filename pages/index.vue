@@ -2,6 +2,13 @@
 import { format, getYear } from 'date-fns'
 import getSiteMeta from '~/utilities/getSiteMeta'
 
+// Safari/iOS requires ISO 8601 format with 'T' separator
+const parseDate = (datetime) => {
+  if (!datetime) return new Date()
+  const isoString = String(datetime).replace(' ', 'T')
+  return new Date(isoString)
+}
+
 const { data: posts } = await useAsyncData('blog-posts', () => {
   return queryCollection('posts')
     .order('createdAt', 'DESC')
@@ -13,7 +20,7 @@ const blogroll = computed(() => {
 
   const grouped = {}
   posts.value.forEach(post => {
-    const year = getYear(new Date(post.createdAt))
+    const year = getYear(parseDate(post.createdAt))
     if (!grouped[year]) {
       grouped[year] = []
     }
@@ -26,11 +33,11 @@ const blogroll = computed(() => {
 })
 
 const formatToHumanDate = (datetime) => {
-  return format(new Date(datetime), 'dd/MM')
+  return format(parseDate(datetime), 'dd/MM')
 }
 
 const getPostYear = (datetime) => {
-  return getYear(new Date(datetime))
+  return getYear(parseDate(datetime))
 }
 
 const meta = getSiteMeta()

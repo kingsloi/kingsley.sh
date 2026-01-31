@@ -61,7 +61,7 @@ const projects = [
     url: 'https://madabouthair.online/',
     image: '/i/projects/madabouthair.online.png',
     description: "Website and blog for my wife's hair styling business.",
-    stack: ['Laravel', 'Easel'],
+    stack: ['Laravel', 'cnvs/easel'],
     repo: 'https://github.com/kingsloi/madabouthair.online'
   }
 ]
