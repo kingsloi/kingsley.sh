@@ -1,89 +1,105 @@
-<template>
-  <div id="photo" class="avatar" />
-</template>
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 
-<script>
-import $ from 'jquery'
-export default {
-  mounted () {
-    function photoPosition (photo, { left, top }, e, photoPos) {
-      const touchstart = e.type === 'touchstart' || e.type === 'touchmove'
-      const event = touchstart ? e.originalEvent : e
-      const pageX = touchstart ? event.targetTouches[0].pageX : event.pageX
-      const pageY = touchstart ? event.targetTouches[0].pageY : event.pageY
+const photoRef = ref(null)
+const isIncognito = ref(false)
 
-      const coordX = pageX - left - 96
-      const coordY = pageY - top - 96
+let moveHandler = null
 
-      const absY = Math.abs(coordY)
-      const absX = Math.abs(coordX)
+const photoPosition = (photo, offset, e, photoPos) => {
+  const touchstart = e.type === 'touchstart' || e.type === 'touchmove'
+  const event = touchstart ? e : e
+  const pageX = touchstart ? event.touches[0].pageX : event.pageX
+  const pageY = touchstart ? event.touches[0].pageY : event.pageY
 
-      if (coordX + 96 >= 0 && coordX + 96 <= 194 && coordY + 96 >= 0 && coordY + 96 <= 194) {
-        photo.css({
-          'background-position': `0px ${photoPos}`,
-          filter: 'grayscale(0)'
-        })
-      } else if (coordX >= 0 && coordY < 0) {
-        photo.css('filter', 'grayscale(1)')
-        if (absX / absY >= 2) {
-          photo.css('background-position', `-200px ${photoPos}`)
-        } else if (absY / absX >= 2) {
-          photo.css('background-position', `-800px ${photoPos}`)
-        } else {
-          photo.css('background-position', `-1200px ${photoPos}`)
-        }
-      } else if (coordX >= 0 && coordY >= 0) {
-        photo.css('filter', 'grayscale(1)')
-        if (absX / absY >= 2) {
-          photo.css('background-position', `-200px ${photoPos}`)
-        } else if (absY / absX >= 2) {
-          photo.css('background-position', `-600px ${photoPos}`)
-        } else {
-          photo.css('background-position', `-1400px ${photoPos}`)
-        }
-      } else if (coordX < 0 && coordY >= 0) {
-        photo.css('filter', 'grayscale(1)')
-        if (absX / absY >= 2) {
-          photo.css('background-position', `-400px ${photoPos}`)
-        } else if (absY / absX >= 2) {
-          photo.css('background-position', `-600px ${photoPos}`)
-        } else {
-          photo.css('background-position', `-1600px ${photoPos}`)
-        }
-      } else if (coordX < 0 && coordY < 0) {
-        photo.css('filter', 'grayscale(1)')
-        if (absX / absY >= 2) {
-          photo.css('background-position', `-400px ${photoPos}`)
-        } else if (absY / absX >= 2) {
-          photo.css('background-position', `-800px ${photoPos}`)
-        } else {
-          photo.css('background-position', `-1000px ${photoPos}`)
-        }
-      }
+  const coordX = pageX - offset.left - 96
+  const coordY = pageY - offset.top - 96
+
+  const absY = Math.abs(coordY)
+  const absX = Math.abs(coordX)
+
+  if (coordX + 96 >= 0 && coordX + 96 <= 194 && coordY + 96 >= 0 && coordY + 96 <= 194) {
+    photo.style.backgroundPosition = `0px ${photoPos}`
+    photo.style.filter = 'grayscale(0)'
+  } else if (coordX >= 0 && coordY < 0) {
+    photo.style.filter = 'grayscale(1)'
+    if (absX / absY >= 2) {
+      photo.style.backgroundPosition = `-200px ${photoPos}`
+    } else if (absY / absX >= 2) {
+      photo.style.backgroundPosition = `-800px ${photoPos}`
+    } else {
+      photo.style.backgroundPosition = `-1200px ${photoPos}`
     }
-
-    const photos = [{
-      elem: $('#photo'),
-      pos: '200px'
-    }]
-
-    photos.forEach((photo) => {
-      photo.offset = photo.elem.offset()
-
-      photo.elem.click(() => {
-        photo.elem.toggleClass('incognito')
-        photo.elem.css({
-          'background-position': `-1800px ${photo.pos}`,
-          filter: 'grayscale(0)'
-        })
-      })
-    })
-
-    $(document).on('mousemove touchmove', (e) => {
-      photos.forEach(({ elem, offset, pos }) => {
-        photoPosition(elem, offset, e, pos)
-      })
-    })
+  } else if (coordX >= 0 && coordY >= 0) {
+    photo.style.filter = 'grayscale(1)'
+    if (absX / absY >= 2) {
+      photo.style.backgroundPosition = `-200px ${photoPos}`
+    } else if (absY / absX >= 2) {
+      photo.style.backgroundPosition = `-600px ${photoPos}`
+    } else {
+      photo.style.backgroundPosition = `-1400px ${photoPos}`
+    }
+  } else if (coordX < 0 && coordY >= 0) {
+    photo.style.filter = 'grayscale(1)'
+    if (absX / absY >= 2) {
+      photo.style.backgroundPosition = `-400px ${photoPos}`
+    } else if (absY / absX >= 2) {
+      photo.style.backgroundPosition = `-600px ${photoPos}`
+    } else {
+      photo.style.backgroundPosition = `-1600px ${photoPos}`
+    }
+  } else if (coordX < 0 && coordY < 0) {
+    photo.style.filter = 'grayscale(1)'
+    if (absX / absY >= 2) {
+      photo.style.backgroundPosition = `-400px ${photoPos}`
+    } else if (absY / absX >= 2) {
+      photo.style.backgroundPosition = `-800px ${photoPos}`
+    } else {
+      photo.style.backgroundPosition = `-1000px ${photoPos}`
+    }
   }
 }
+
+const handleClick = () => {
+  isIncognito.value = !isIncognito.value
+  if (photoRef.value) {
+    photoRef.value.style.backgroundPosition = `-1800px 200px`
+    photoRef.value.style.filter = 'grayscale(0)'
+  }
+}
+
+onMounted(() => {
+  const photo = photoRef.value
+  if (!photo) return
+
+  const rect = photo.getBoundingClientRect()
+  const offset = {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY
+  }
+  const photoPos = '200px'
+
+  moveHandler = (e) => {
+    photoPosition(photo, offset, e, photoPos)
+  }
+
+  document.addEventListener('mousemove', moveHandler)
+  document.addEventListener('touchmove', moveHandler)
+})
+
+onUnmounted(() => {
+  if (moveHandler) {
+    document.removeEventListener('mousemove', moveHandler)
+    document.removeEventListener('touchmove', moveHandler)
+  }
+})
 </script>
+
+<template>
+  <div
+    ref="photoRef"
+    class="avatar"
+    :class="{ 'incognito': isIncognito }"
+    @click="handleClick"
+  />
+</template>

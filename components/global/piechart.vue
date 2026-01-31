@@ -1,28 +1,37 @@
-<script>
+<script setup>
+import { ref, onMounted, watch } from 'vue'
 import { Doughnut } from 'vue-chartjs'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
-export default {
-  extends: Doughnut,
+ChartJS.register(ArcElement, Tooltip, Legend)
 
-  mixins: [],
-
-  props: ['chartData', 'options'],
-
-  mounted () {
-    this.renderChart(this.chartData, this.options)
+const props = defineProps({
+  chartData: {
+    type: Object,
+    required: true
   },
+  options: {
+    type: Object,
+    default: () => ({})
+  }
+})
 
-  watch: {
-  },
+const chartRef = ref(null)
 
-
-  methods: {
-    update() {
-      this.$data._chart.update()
+defineExpose({
+  chartRef,
+  _data: {
+    get _chart() {
+      return chartRef.value?.chart
     }
   }
-}
+})
 </script>
 
-<style>
-</style>
+<template>
+  <Doughnut
+    ref="chartRef"
+    :data="chartData"
+    :options="options"
+  />
+</template>

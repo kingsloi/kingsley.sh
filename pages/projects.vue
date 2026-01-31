@@ -1,143 +1,231 @@
+<script setup>
+import getSiteMeta from '~/utilities/getSiteMeta'
+
+const projects = [
+  {
+    name: 'fiorillo-us.com',
+    url: 'https://fiorillo-us.com',
+    image: '/i/projects/fiorillo-us.com-beekeeping-equipment.jpg',
+    description: 'E-commerce website for beekeeping equipment.',
+    stack: ['Statamic', 'Laravel', 'Tailwind']
+  },
+  {
+    name: 'philipsbrothers.com',
+    url: 'https://philipsbrothers.com',
+    image: '/i/projects/philipsbrothers-electrical-contractors.jpg',
+    description: 'E-commerce platform for industrial equipment supplier.',
+    stack: ['Laravel', 'Nova', 'Bootstrap']
+  },
+  {
+    name: 'sterlingstrong.foundation',
+    url: 'https://sterlingstrong.foundation/',
+    image: '/i/projects/sterlingstrong.foundation.png',
+    description: 'Non-profit foundation to help families with rare/chronic illnesses and long ICU stays.',
+    stack: ['Nuxt.js', 'Vue.js', 'Bootstrap', 'Donorbox', 'RSVPify']
+  },
+  {
+    name: 'millerbeach.community',
+    url: 'https://millerbeach.community',
+    post: '/posts/2019/millerbeach-comminity-air-quality-and-industry-tracker-website',
+    image: '/i/projects/fleetmon-vessel-tracking.png',
+    description: 'Real-time air quality, flight, and vessel tracking for Gary, Indiana.',
+    stack: ['Express.js', 'Vue.js', 'Redis'],
+    repo: 'https://github.com/kingsloi/community-airmonitor'
+  },
+  {
+    name: 'happybirthdaymaddie.com',
+    url: 'https://happybirthdaymaddie.com/2020',
+    image: '/i/projects/happybirthdaymaddie.com.jpg',
+    description: 'Annual custom birthday website for my wife, featuring games and music videos.',
+    stack: ['GDevelop', 'Pixel Art'],
+    repo: 'https://github.com/kingsloi/happybirthdaymaddie.com/2020'
+  },
+  {
+    name: 'heyareyou.online',
+    url: 'https://heyareyou.online/',
+    image: '/i/projects/heyareyou.online.png',
+    description: 'Share your online availability status with teams across time zones.',
+    stack: ['Laravel', 'Vue.js'],
+    repo: 'https://github.com/kingsloi/heyareyou.online'
+  },
+  {
+    name: 'whynotemploy.me',
+    url: 'https://whynotemploy.me/',
+    image: '/i/projects/whynotemploy.me.png',
+    description: 'The personal site that landed me my first US internship in 2011.',
+    stack: ['Laravel'],
+    repo: 'https://github.com/kingsloi/whynotemploy.me'
+  },
+  {
+    name: 'madabouthair.online',
+    url: 'https://madabouthair.online/',
+    image: '/i/projects/madabouthair.online.png',
+    description: "Website and blog for my wife's hair styling business.",
+    stack: ['Laravel', 'Easel'],
+    repo: 'https://github.com/kingsloi/madabouthair.online'
+  }
+]
+
+const metaData = {
+  type: 'website',
+  title: 'Projects',
+  description: 'Selected Projects by Kingsley Raspe, Full Stack Developer/DevOps Engineer based in Gary, Indiana.'
+}
+const meta = getSiteMeta(metaData)
+
+useHead({
+  title: 'Recent Projects | kingsley.sh',
+  meta: [...meta]
+})
+</script>
+
 <template>
-  <main class="site-content site-content--projects">
+  <main class="site-content">
     <section class="container">
       <h1>Things I've Done</h1>
       <p class="lead">
-        Here's a sample of projects I've worked on recently.
+        A sample of projects I've worked on.
       </p>
 
-      <article class="project-single">
-        <h2><a target="_blank" href="https://sterlingstrong.foundation/">sterlingstrong.foundation</a></h2>
-        <p>To honour our daughter Sterling, her mom & I will be creating the <a target="_blank" href="https://sterlingstrong.foundation/">Sterling Strong Foundation</a>. Our goals will be to help families in a similar situation to ours: rare/chronic illnesses, long/multiple ICU stays, multi-system affecting conditions, treatment outside of home state, etc. with a few things which we both personally took comfort from during Sterling's 207 days in the ICU, & help bring awareness to, and be an advocates of, congenital heart disease (CHD), Kabuki syndrome, Isomerism/Heterotaxy, and other rare diseases.</p>
-
-        <a target="_blank" href="https://sterlingstrong.foundation/" class="d-block mw-100 w-75 mx-auto border-0">
-          <img src="/i/projects/sterlingstrong.foundation.png" class="img-fluid mb-3">
-        </a>
-      </article>
-
-      <article class="project-single">
-        <h2><NuxtLink to="/posts/2019/millerbeach-comminity-air-quality-and-industry-tracker-website">millerbeach.community</NuxtLink></h2>
-        <p>At the southernmost point of Lake Michigan sits the Miller Beach neighbourhood of Gary, Indiana, with its beautiful sandy beaches, dunes, and unique habitats. But not too far away lie distinctly unnatural steel mills, oil refineries, chemical companies, major international airports and highways, cargo trains and ships, etc. Necessary by-products of modern society, but at what cost?</p>
-        <p>After a bout of foul odor caused residents of Miller Beach to experience eye irritation and nausea, my neighbors and I pitched in and bought a <a href="https://www2.purpleair.com/products/purpleair-pa-ii" target="_blank">Purple Air PA-II</a> air quality sensor, allowing us to track the air quality in real time, 24/7. Not long after the PurpleAir II sensor was up and running, <a href="https://aviation-edge.com/?utm_source=gary-indiana-opensource-air-monitor-project-page" target="_blank">Aviation Edge</a> generously provided API access to their flight database, enabling us to track airplanes passing over our community, and those arriving/departing to/from nearby Chicago O'Hare (ORD), Midway (MDW), and Gary (GYY) international airports. Around the same time, <a href="https://www.fleetmon.com/my/ais-stations?utm_source=gary-indiana-opensource-air-monitor-blog-post" target="_blank">FleetMon</a> generously provided an AIS antenna, allowing us to also track boats/ships on Lake Michigan as they move to/from the ports, mills and refineries in the region.</p>
-
-        <p>For more info, checkout <a href="https://millerbeach.community">millerbeach.community</a>.</p>
-
-        <a href="/posts/2019/millerbeach-comminity-air-quality-and-industry-tracker-website">
-          <img src="/i/projects/fleetmon-vessel-tracking.png" class="img-fluid mb-3">
-        </a>
-
-        <div class="inline-table">
-          <div>Date</div>
-          <div>Nov 2019 - ongoing</div>
-          <div>Stack</div>
-          <div>Express.js, Vue.js, Redis, JavaScript</div>
-          <div>Repo</div>
-          <div><a target="_blank" href="https://github.com/kingsloi/community-airmonitor">github.com/kingsloi/community-airmonitor</a></div>
-        </div>
-      </article>
-
-      <article class="project-single">
-        <h2><a target="_blank" href="https://happybirthdaymaddie.com">happybirthdaymaddie.com</a></h2>
-        <p>I wish my wife a happy birthday with a website that I customise ever year with a different theme. 2017-2019 were custom rap music videos, 2020's theme was a game I developed based on our life in Miller Beach.</p>
-
-        <a target="_blank" href="https://happybirthdaymaddie.com">
-          <img src="/i/projects/happybirthdaymaddie.com.jpg" class="img-fluid mb-3">
-        </a>
-
-        <div class="inline-table">
-          <div>Date</div>
-          <div>Every year</div>
-          <div>Stack</div>
-          <div><a target="_blank" href="https://gdevelop-app.com/">GDevelop</a>, custom graphics/characters</div>
-          <div>Repo</div>
-          <div><a target="_blank" href="https://github.com/kingsloi/happybirthdaymaddie.com">github.com/kingsloi/happybirthdaymaddie.com</a></div>
-        </div>
-      </article>
-
-      <article class="project-single">
-        <h2><a target="_blank" href="https://heyareyou.online/">heyareyou.online</a></h2>
-        <p>I was fortunate to live in Dubai for a year whilst contracting as a full stack developer. I contracted for companies in Dubai, the UK, and the USA, I was available between GMT -4 through GMT +6. Originally through <code>iskingsley.online</code>, I wanted to share my online status with the teams I worked with, eventually launching <a target="_blank" href="https://heyareyou.online/">heyareyou.online</a> for others to share their online status.</p>
-
-        <a target="_blank" href="https://heyareyou.online">
-          <img src="/i/projects/heyareyou.online.png" class="img-fluid mb-3">
-        </a>
-
-        <div class="inline-table">
-          <div>Date</div>
-          <div>Oct 2017</div>
-          <div>Stack</div>
-          <div>Laravel, Vue.js</div>
-          <div>Repo</div>
-          <div><a target="_blank" href="https://github.com/kingsloi/heyareyou.online">github.com/kingsloi/heyareyou.online</a></div>
-        </div>
-      </article>
-
-      <article class="project-single">
-        <h2><a target="_blank" href="https://whynotemploy.me/">whynotemploy.me</a></h2>
-        <p>In 2011, after months of unsuccessfully securing an internship through university, I decided I needed to do something different. After discovering the .me domain extension, I knew there was opportunity to create something unique to get my name out there. That's when whynotemploy.me was born.</p>
-
-        <p>I created a single page website of who I am and what I was searching for, and after my late-night <a target="_blank" href="https://twitter.com/Grossbauer/status/73166111910264832?s=20">tweet</a>, <a target="_blank" href="https://whynotemploy.me">whynotemploy.me</a> was picked up by <a target="_blank" href="https://grossbauer.com">The Grossbauer Group</a>, an integrated marketing agency in Northwest Indiana.</p>
-
-        <p>2 interviews and a trip to the US Embassy in London later, I was on a flight to the USA to begin a 12 month internship with The Grossbauer Group.</p>
-
-        <a target="_blank" href="https://whynotemploy.me/">
-          <img src="/i/projects/whynotemploy.me.png" class="img-fluid mb-3">
-        </a>
-
-        <div class="inline-table">
-          <div>Date</div>
-          <div>2011-2019</div>
-          <div>Stack</div>
-          <div>Laravel</div>
-          <div>Repo</div>
-          <div><a target="_blank" href="https://github.com/kingsloi/whynotemploy.me">github.com/kingsloi/whynotemploy.me</a></div>
-        </div>
-      </article>
-
-      <article class="project-single">
-        <h2><a target="_blank" href="https://madabouthair.online/">madabouthair.online</a></h2>
-        <p>Trying to encapsulate her unique style, I designed and developed a website/blog for my wife's love/business: hair.</p>
-
-        <a target="_blank" href="https://madabouthair.online/">
-          <img src="/i/projects/madabouthair.online.png" class="img-fluid mb-3">
-        </a>
-
-        <div class="inline-table">
-          <div>Date</div>
-          <div>January 2017</div>
-          <div>Stack</div>
-          <div>Laravel &amp; cnvs/easel</div>
-          <div>Repo</div>
-          <div><a target="_blank" href="https://github.com/kingsloi/madabouthair.online">github.com/kingsloi/madabouthair.online</a></div>
-        </div>
-      </article>
+      <div class="projects-grid">
+        <article v-for="project in projects" :key="project.name" class="project-card">
+          <a :href="project.url" target="_blank" class="project-card__image">
+            <div v-if="project.comingSoon" class="project-card__placeholder">
+              <span>Coming Soon</span>
+            </div>
+            <img v-else :src="project.image" :alt="project.name" />
+          </a>
+          <div class="project-card__content">
+            <h2 class="project-card__title">
+              <a :href="project.url" target="_blank">{{ project.name }}</a>
+            </h2>
+            <p class="project-card__description">{{ project.description }}</p>
+            <div class="project-card__stack">
+              <span v-for="tech in project.stack" :key="tech" class="project-card__tech">{{ tech }}</span>
+            </div>
+            <div v-if="project.repo || project.post" class="project-card__links">
+              <a v-if="project.repo" :href="project.repo" target="_blank">GitHub</a>
+              <NuxtLink v-if="project.post" :to="project.post">Read more</NuxtLink>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 </template>
 
-<script>
-import $ from 'jquery'
-import getSiteMeta from '~/utilities/getSiteMeta'
-
-export default {
-
-  computed: {
-    meta () {
-      const metaData = {
-        type: 'website',
-        title: 'Projects',
-        description: 'Selected Projects by Kingsley Raspe, Full Stack Developer/DevOps Engineer based in Gary, Indiana.'
-      }
-      return getSiteMeta(metaData)
-    }
-  },
-  head () {
-    return {
-      title: 'Recent Projects | kingsley.sh',
-      meta: [
-        ...this.meta
-      ]
-    }
-  }
+<style scoped>
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
-</script>
+
+.project-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-card__image {
+  display: block;
+  border: none;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.project-card:hover .project-card__image img {
+  transform: scale(1.03);
+}
+
+.project-card__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card__placeholder span {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+.project-card__content {
+  padding: 1rem;
+}
+
+.project-card__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.project-card__title a {
+  border: none;
+  color: inherit;
+}
+
+.project-card__title a:hover {
+  text-decoration: underline;
+}
+
+.project-card__description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.project-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-card__tech {
+  background: #e0e0e0;
+  color: #333;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.project-card__links {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.project-card__links a {
+  color: #666;
+  border: none;
+}
+
+.project-card__links a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+</style>

@@ -10,7 +10,7 @@ alt: my first blog post
 <div class="gallery-post">
     <p>My wife and I were lucky to acquire some beautiful old wood from a demolished barn in the family. We needed a proper dining room table, so my wife asked if I could build one and, without realising the scale of the undertaking, I said "hell yuh!" Around a hundred hours and a lot of sweat later, I produced a table and bench combo!</p>
     <p>With no fine-furniture experience, not much woodworking experience either, imperial measuring tapes, and hours of trial and error, I finally built some furniture I'm proud of! Here's to many years of use 🍻</p>
-    <div class="inline-table w-75 mx-lg-auto mt-4">
+    <div class="deets-grid w-75 mx-lg-auto mt-4">
         <div>Wood/Material</div>
         <div>60+ year old Oak &amp; Yellow Pine from demolished family barn</div>
         <div>Legs</div>

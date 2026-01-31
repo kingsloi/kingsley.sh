@@ -9,7 +9,7 @@ updatedAt: 2021-03-13 12:00:00
 <div class="container">
   <p>Having spent the first twenty-five years of my life in the United Kingdom, I had a lot of exposure to the country’s National Health Service (NHS). I had a bad childhood stutter requiring years of therapy, I had severe childhood asthma, my mom was suddenly hospitalised and died when I was a teen, I broke bones, was treated for infections/wounds, wore braces for eight-plus years, had my jaw bones broken, shortened, and fixed together with eight pins (bimaxillary osteotomy), had two kidney stone surgeries, countless X-rays, CTs, MRIs, etc. My dad got treated for, and is in remission from, cancer ... you get the point, and thanks to socialised medicine, my family and I never received a single bill or invoice.<sup><a href="#note-1">[1]</a></sup></p>
 
-  <figure class="my-5 mb-3 figure mx-md-n7">
+  <figure class="my-10 figure mx-md-n7">
       <audio controls class="w-100">
           <source src="/audio/speak-softly-sterling.mp3">
       </audio>
