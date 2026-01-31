@@ -7,7 +7,9 @@ const route = useRoute()
 const config = useRuntimeConfig()
 
 const { data: page } = await useAsyncData(`post-${route.params.year}-${route.params.slug}`, () => {
-  return queryContent(`posts/${route.params.year}/${route.params.slug}`).findOne()
+  return queryCollection('posts')
+    .path(`/posts/${route.params.year}/${route.params.slug}`)
+    .first()
 })
 
 const formatToHumanDate = (datetime) => {

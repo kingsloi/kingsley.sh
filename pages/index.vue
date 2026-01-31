@@ -3,9 +3,9 @@ import { format, getYear } from 'date-fns'
 import getSiteMeta from '~/utilities/getSiteMeta'
 
 const { data: posts } = await useAsyncData('blog-posts', () => {
-  return queryContent('posts')
-    .sort({ createdAt: -1 })
-    .find()
+  return queryCollection('posts')
+    .order('createdAt', 'DESC')
+    .all()
 })
 
 const blogroll = computed(() => {
