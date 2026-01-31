@@ -49,7 +49,7 @@ const projects = [
     repo: 'https://github.com/kingsloi/heyareyou.online'
   },
   {
-    name: 'whynotemploy.me',
+    name: 'whynotemploy.me'
     url: 'https://whynotemploy.me/',
     image: '/i/projects/whynotemploy.me.png',
     description: 'The personal site that landed me my first US internship in 2011.',

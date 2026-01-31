@@ -1,16 +1,19 @@
 <script setup>
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 import hljs from 'highlight.js'
 import getSiteMeta from '~/utilities/getSiteMeta'
 
 const route = useRoute()
 const config = useRuntimeConfig()
 
-// Safari/iOS requires ISO 8601 format with 'T' separator
+// Parse dates safely for all browsers including Safari/iOS
 const parseDate = (datetime) => {
   if (!datetime) return new Date()
-  const isoString = String(datetime).replace(' ', 'T')
-  return new Date(isoString)
+  const str = String(datetime)
+  if (str.includes('T')) {
+    return new Date(str)
+  }
+  return parse(str, 'yyyy-MM-dd HH:mm:ss', new Date())
 }
 
 const { data: page } = await useAsyncData(`post-${route.params.year}-${route.params.slug}`, () => {

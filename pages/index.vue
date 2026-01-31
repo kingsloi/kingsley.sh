@@ -1,12 +1,17 @@
 <script setup>
-import { format, getYear } from 'date-fns'
+import { format, getYear, parse } from 'date-fns'
 import getSiteMeta from '~/utilities/getSiteMeta'
 
-// Safari/iOS requires ISO 8601 format with 'T' separator
+// Parse dates safely for all browsers including Safari/iOS
 const parseDate = (datetime) => {
   if (!datetime) return new Date()
-  const isoString = String(datetime).replace(' ', 'T')
-  return new Date(isoString)
+  const str = String(datetime)
+  // Try parsing common formats
+  if (str.includes('T')) {
+    return new Date(str)
+  }
+  // Parse "YYYY-MM-DD HH:mm:ss" format explicitly
+  return parse(str, 'yyyy-MM-dd HH:mm:ss', new Date())
 }
 
 const { data: posts } = await useAsyncData('blog-posts', () => {
