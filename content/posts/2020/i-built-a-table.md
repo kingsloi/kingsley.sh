@@ -1,8 +1,8 @@
 ---
 title: I built a table 💪
 description: I’ve never really done much woodwork, but my wife decided she wanted me to repurpose some sixty-plus-year-old barn wood. I’m always up for a challenge, so I figured what better way to do justice to it than to go down the rabbit hole of fine-furniture creation, and about a hundred hours later, I finished building our dining room table!
-createdAt: 2020-06-31 12:00:00
-updatedAt: 2020-06-31 12:00:00
+createdAt: 2020-06-30 12:00:00
+updatedAt: 2020-06-30 12:00:00
 img: /i/posts/i-built-a-table/18-situated.jpg
 alt: my first blog post
 ---
