@@ -79,7 +79,7 @@ onMounted(() => {
         </h1>
 
         <div class="post__meta">
-          <span>{{ formatToHumanDate(page.createdAt) }}</span>
+          <span data-allow-mismatch="text">{{ formatToHumanDate(page.createdAt) }}</span>
         </div>
       </div>
 

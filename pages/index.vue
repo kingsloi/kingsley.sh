@@ -73,7 +73,7 @@ useHead({
     <section class="blogroll">
       <div class="container">
         <section v-for="section in blogroll" :key="section.year" class="blogroll__section">
-          <h3 class="blogroll__year">
+          <h3 class="blogroll__year" data-allow-mismatch="text">
             {{ section.year }}
           </h3>
           <ul class="list-none pl-0">
@@ -84,7 +84,7 @@ useHead({
                   :class="{ 'starred': post.starred }"
                 >
                   <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
-                  <time class="text-sm" :datetime="post.createdAt">{{ formatToHumanDate(post.createdAt) }}</time>
+                  <time class="text-sm" :datetime="post.createdAt" data-allow-mismatch="text">{{ formatToHumanDate(post.createdAt) }}</time>
                 </header>
                 <p v-html="post.description" />
               </article>
