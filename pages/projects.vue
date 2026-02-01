@@ -6,22 +6,29 @@ const projects = [
     name: 'fiorillo-us.com',
     url: 'https://fiorillo-us.com',
     image: '/i/projects/fiorillo-us.com-beekeeping-equipment.jpg',
-    description: 'E-commerce website for beekeeping equipment.',
+    description: 'US catalog for Fiorillo, an Italian manufacturer of beekeeping equipment like extractors, protective clothing, and apiary tools.',
     stack: ['Statamic', 'Laravel', 'Tailwind']
   },
   {
     name: 'philipsbrothers.com',
     url: 'https://philipsbrothers.com',
     image: '/i/projects/philipsbrothers-electrical-contractors.jpg',
-    description: 'E-commerce platform for industrial equipment supplier.',
+    description: 'Inventory catalog for a family-owned electrical contractor with 1,500+ transformers, generators, and load banks for rent or purchase.',
     stack: ['Laravel', 'Nova', 'Bootstrap']
   },
   {
     name: 'sterlingstrong.foundation',
     url: 'https://sterlingstrong.foundation/',
     image: '/i/projects/sterlingstrong.foundation.png',
-    description: 'Non-profit foundation to help families with rare/chronic illnesses and long ICU stays.',
+    description: 'Non-profit foundation helping families facing rare illnesses, long ICU stays, and medical hardship.',
     stack: ['Nuxt.js', 'Vue.js', 'Bootstrap', 'Donorbox', 'RSVPify']
+  },
+  {
+    name: 'sterlingstrong.life',
+    url: 'https://sterlingstrong.life/',
+    image: '/i/projects/sterling-strong-beads-of-courage.png',
+    description: 'A tribute to our daughter Sterling, sharing her story and journey.',
+    stack: ['Laravel', 'Tailwind']
   },
   {
     name: 'millerbeach.community',
