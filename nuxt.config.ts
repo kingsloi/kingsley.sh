@@ -33,6 +33,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,700;1,400&display=swap' }
+      ],
+      script: [
+        { defer: true, 'data-domain': 'kingsley.sh', src: 'https://plausible.io/js/script.js' }
       ]
     }
   },
